@@ -9,7 +9,7 @@
 - [🚀 시작하기(설치)](#-시작하기설치-)
 - [🧭 URL 매핑(요약)](#-url-매핑요약)
 - [🧱 ERD & 컬럼 설명](#-erd--컬럼-설명)
-- [🔒 정책(소프트 삭제 / 파일 업로드 / 페이징)](#-정책소프트-삭제--파일-업로드--페이징)
+- [🔒 정책(삭제 / 파일 업로드 / 페이징)](#-정책소프트-삭제--파일-업로드--페이징)
 
 ---  
 # 🍰 NewProject – 커뮤니티/게시판 웹 애플리케이션
@@ -240,7 +240,7 @@ newproject/
 
 ---
 
-## 🧱 ERD (Mermaid)
+## 🧱 ERD (Mermaid) &  컬럼 설명
 
 
 ```mermaid
@@ -364,6 +364,69 @@ erDiagram
   USER ||--o{ COMMENT_Q : comments
 
 ```
+### 컬럼 설명
+### 👤 USER
+| 컬럼명 | 타입 | 설명 |
+|--------|------|------|
+| `user_no` | INT (PK) | 사용자 고유 번호 (Auto Increment) |
+| `user_id` | VARCHAR | 로그인 ID |
+| `user_pw` | VARCHAR | 비밀번호 (현재 평문 저장 → 해시 권장) |
+| `user_name` | VARCHAR | 사용자 이름 |
+| `email` | VARCHAR | 이메일 |
+| `age` | INT | 나이 |
+| `gender` | CHAR | 성별 (M/F/U) |
+| `note` | VARCHAR / TEXT | 비고 (NULL 허용) |
+| `join_date` | TIMESTAMP | 가입일 (기본 CURRENT_TIMESTAMP) |
+| `state` | CHAR | 상태 (E=정상, D=삭제) |
+| `role` | CHAR | 권한 (A=관리자, U=일반 사용자) |
+
+---
+
+### ☕ COFFEE_BOARD
+| 컬럼명 | 타입 | 설명 |
+|--------|------|------|
+| `fno` | INT (PK) | 게시글 번호 |
+| `writer_no` | INT (FK → USER.user_no) | 작성자 번호 |
+| `title` | VARCHAR | 글 제목 |
+| `content` | TEXT | 글 내용 |
+| `rdate` | TIMESTAMP | 등록일 |
+| `hit` | INT | 조회수 |
+| `state` | CHAR | 상태 (E=정상, D=삭제) |
+| `notice_flag` | CHAR | 공지글 여부 (Y/N) |
+| `uuid_filename` | VARCHAR | 서버 저장 파일명 (UUID) |
+| `origin_filename` | VARCHAR | 원본 파일명 |
+
+---
+
+### 🍰 DESSERT_BOARD / KOREAN_TRADITION_DESSERT_BOARD / NOTICE_BOARD
+> 구조는 COFFEE_BOARD와 동일
+
+| 컬럼명 | 타입 | 설명 |
+|--------|------|------|
+| `fno` | INT (PK) | 게시글 번호 |
+| `writer_no` | INT (FK → USER.user_no) | 작성자 번호 |
+| `title` | VARCHAR | 글 제목 |
+| `content` | TEXT | 글 내용 |
+| `rdate` | TIMESTAMP | 등록일 |
+| `hit` | INT | 조회수 |
+| `state` | CHAR | 상태 (E=정상, D=삭제) |
+| `notice_flag` | CHAR | 공지글 여부 (Y/N) |
+| `uuid_filename` | VARCHAR | 서버 저장 파일명 (UUID) |
+| `origin_filename` | VARCHAR | 원본 파일명 |
+
+---
+
+### 💬 COMMENT_C / COMMENT_D / COMMENT_K / COMMENT_Q
+> 각 게시판에 대응하는 댓글 테이블 (구조 동일)
+
+| 컬럼명 | 타입 | 설명 |
+|--------|------|------|
+| `cno` | INT (PK) | 댓글 번호 |
+| `fno` | INT (FK → 각 BOARD.fno) | 게시글 번호 |
+| `writer_no` | INT (FK → USER.user_no) | 작성자 번호 |
+| `content` | TEXT | 댓글 내용 |
+| `rdate` | TIMESTAMP | 작성일 |
+| `state` | CHAR | 상태 (E=정상, D=삭제) |
 ---
 
 ## 🔒 정책
