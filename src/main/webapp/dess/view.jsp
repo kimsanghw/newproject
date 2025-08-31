@@ -124,7 +124,7 @@
                 <div class="btn1">                        
                     <button type="button"  onclick="location.href='list.jsp'" class="btn">글목록</button>
                     
-					<button type="button" onclick="location.href='resgister.jsp'" class="btn">글쓰기</button> 
+					<button type="button" onclick="location.href='register.jsp'" class="btn">글쓰기</button> 
 					  <%
 					if(session.getAttribute("uno")!=null && session.getAttribute("uno").equals(uno)){%>
                     <button onclick="location.href='modify.jsp?dno=<%=dno%>'" class="btn">글수정</button>
