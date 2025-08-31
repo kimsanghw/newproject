@@ -10,7 +10,7 @@
                                 
                 </div>
                     <div class="content_1">        
-                    <form name="resgister" method="post" enctype="multipart/form-data" action="resgisterOk.jsp" >          
+                    <form name="register" method="post" enctype="multipart/form-data" action="registerOk.jsp" >          
                         <table border="1" >
                             <tr>
 								<td  >제목</td>
