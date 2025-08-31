@@ -9,6 +9,7 @@
 
 
 
+
 <%	//method get이면 다른 페이지로 튕겨내기
 	String method = request.getMethod();
 	if(method.equals("GET") ){
