@@ -11,12 +11,13 @@
 - [🧱 ERD & 컬럼 설명](#-erd--컬럼-설명)
 - [🔒 정책(소프트 삭제 / 파일 업로드 / 페이징)](#-정책소프트-삭제--파일-업로드--페이징)
 
-  
+---  
 # 🍰 NewProject – 커뮤니티/게시판 웹 애플리케이션
 
 간단한 커뮤니티/게시판 기반 웹 애플리케이션입니다.  
 카테고리별 게시판(디저트, 전통과자, 커피, 공지)과 댓글, 사용자 관리를 포함합니다.
 
+---
  ## 📌 핵심 기능
 - 👤 **사용자 관리** : 회원가입 / 로그인 / 권한
 - 📝 **게시판 CRUD** : 디저트 / 전통과자 / 커피 / 공지
@@ -30,14 +31,14 @@
 | **JDBC 직접 사용** (`java.sql.*`, `PreparedStatement`) | 프레임워크 의존성 없이 SQL 제어 | 커넥션/리소스/트랜잭션 직접 처리 필요 |
 | **O’Reilly COS** (`com.oreilly.servlet.MultipartRequest`) | 파일 업로드 간단 | Servlet 3.x `Part` 대비 보안/유연성 한계 |
 | **유틸 클래스** (`DBConn`, `PagingUtil`) | DB 연결 및 페이징 편의 제공 | 고도화에는 한계 |
-
+---
 ## 👉 선택 배경 요약
 
 초기 학습/프로토타입 단계에서 **서버사이드 렌더링 + 최소 의존성**으로  
 빠른 결과를 내기 위한 구조를 채택했습니다.  
 
 → 이후 단계에서는 **MVC 전환 / 보안 강화 / 테스트 자동화**의 토대를 마련하는 것을 목표로 합니다.
-
+---
 ## 📂 모듈 개요 (커피 게시판 예시)
 
 ### 주요 기능
@@ -61,7 +62,7 @@
 - `coffee/include/header.jsp`, `coffee/include/footer.jsp` : 공통 레이아웃
 
 
-
+---
 ## 🔄 요청 흐름 (요약)
 <details> <summary><b>목록 & 검색</b></summary>
 GET /coffee/list.jsp?searchType=title&id&nowPage=n
@@ -97,7 +98,7 @@ UPDATE coffee_board SET state='D' WHERE fno=?
 삭제: POST /coffee/commentDeleteFormOk.jsp
 </details>
 
-
+---
 ## 📁 프로젝트 구조
 
 ```text
