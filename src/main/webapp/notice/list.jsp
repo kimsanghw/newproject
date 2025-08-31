@@ -104,7 +104,7 @@
 	              </form>
 					<div style="margin 5px; padding-left: 20px; ">
 					 <% if(session.getAttribute("authorization")!=null &&session.getAttribute("authorization").equals("A")){%>
-						<button class="btn1" onclick="location.href='resgister.jsp'">공지사항등록</button>
+						<button class="btn1" onclick="location.href='register.jsp'">공지사항등록</button>
 					 <% } %>
 					</div> 
 	              <table class="boardtable">
