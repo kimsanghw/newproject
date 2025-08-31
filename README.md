@@ -82,3 +82,111 @@ UPDATE coffee_board SET state='D' WHERE fno=?
 수정: POST /coffee/commentModifyOk.jsp
 삭제: POST /coffee/commentDeleteFormOk.jsp
 </details>
+
+
+## 📁 프로젝트 구조
+
+```text
+newproject/
+├─ src/
+│  └─ main/
+│     ├─ java/
+│     │  └─ jspStudy/
+│     │     ├─ BoardDTO.java
+│     │     ├─ CommentC.java
+│     │     ├─ CommentD.java
+│     │     ├─ CommentK.java
+│     │     ├─ CommentQ.java
+│     │     ├─ DBConn.java          # DB 연결 헬퍼
+│     │     ├─ PagingUtil.java      # 페이징 유틸
+│     │     └─ UserDTO.java
+│     └─ webapp/
+│        ├─ coffee/                 # 커피 게시판
+│        │  ├─ include/
+│        │  │  ├─ footer.jsp
+│        │  │  └─ header.jsp
+│        │  ├─ list.jsp
+│        │  ├─ view.jsp
+│        │  ├─ register.jsp
+│        │  ├─ registerOk.jsp
+│        │  ├─ modify.jsp
+│        │  ├─ modifyOk.jsp
+│        │  ├─ deleteOk.jsp
+│        │  ├─ commentRegisterOk.jsp
+│        │  ├─ commentModifyOk.jsp
+│        │  └─ commentDeleteFormOk.jsp
+│        │
+│        ├─ dess/                   # 디저트 게시판
+│        │  ├─ include/
+│        │  │  ├─ footer.jsp
+│        │  │  └─ header.jsp
+│        │  ├─ list.jsp
+│        │  ├─ view.jsp
+│        │  ├─ register.jsp        
+│        │  ├─ registerOk.jsp      
+│        │  ├─ modify.jsp
+│        │  ├─ modifyOk.jsp        
+│        │  ├─ deleteOk.jsp
+│        │  ├─ down.jsp
+│        │  ├─ commentRegisterOk.jsp
+│        │  ├─ commentModifyOk.jsp
+│        │  └─ commentDeleteFormOk.jsp
+│        │
+│        ├─ kore/                   # 전통과자 게시판
+│        │  ├─ include/
+│        │  │  ├─ footer.jsp
+│        │  │  └─ header.jsp
+│        │  ├─ list.jsp
+│        │  ├─ view.jsp
+│        │  ├─ register.jsp        
+│        │  ├─ registerOk.jsp      
+│        │  ├─ modify.jsp
+│        │  ├─ modifyOk.jsp         
+│        │  ├─ deleteOk.jsp
+│        │  ├─ commentRegisterOk.jsp
+│        │  ├─ commentModifyOk.jsp
+│        │  └─ commentDeleteFormOk.jsp
+│        │
+│        ├─ notice/                 # 공지 게시판
+│        │  ├─ include/
+│        │  │  ├─ footer.jsp
+│        │  │  └─ header.jsp
+│        │  ├─ list.jsp
+│        │  ├─ view.jsp
+│        │  ├─ register.jsp       
+│        │  ├─ registerOk.jsp      
+│        │  ├─ modify.jsp
+│        │  ├─ modifyOk.jsp         
+│        │  ├─ deleteOk.jsp
+│        │  ├─ down.jsp
+│        │  ├─ commentRegisterOk.jsp
+│        │  ├─ commentModifyOk.jsp
+│        │  └─ commentDeleteFormOk.jsp
+│        │
+│        ├─ user/                   # 사용자
+│        │  ├─ include/
+│        │  │  ├─ footer.jsp
+│        │  │  └─ header.jsp
+│        │  ├─ join.jsp
+│        │  ├─ joinOk.jsp
+│        │  ├─ login.jsp
+│        │  ├─ loginOk.jsp
+│        │  ├─ logout.jsp
+│        │  ├─ checkEmail.jsp
+│        │  └─ checkID.jsp
+│        │
+│        ├─ js/
+│        │  └─ jquery-3.7.1.js
+│        ├─ upload/                 # 업로드 파일 저장소
+│        │  └─ (이미지 파일들)
+│        ├─ home.jsp                # 홈 화면
+│        ├─ META-INF/
+│        │  └─ MANIFEST.MF
+│        └─ WEB-INF/
+│           ├─ lib/
+│           │  ├─ cos-05Nov2002.jar
+│           │  └─ mysql-connector-j-8.1.0.jar
+│           └─ web.xml
+├─ build/
+└─ new.erm                          # ERD 파일
+
