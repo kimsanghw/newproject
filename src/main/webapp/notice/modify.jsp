@@ -79,7 +79,7 @@
                                 
                 </div>
                     <div class="content_1">        
-                    <form name="modify" method="post" enctype="multipart/form-data" action="modityOk.jsp" >          
+                    <form name="modify" method="post" enctype="multipart/form-data" action="modifyOk.jsp" >          
                         <table border="1" >
                             <tr>
 								<td  >제목</td>
