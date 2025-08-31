@@ -233,7 +233,7 @@ newproject/
 ### Dessert/KoreanTradition/Notice
 - 각 모듈 구조 및 엔드포인트 패턴은 Coffee와 동일
 
-
+```
 
 ## 🧱 ERD (Mermaid)
 
@@ -359,7 +359,7 @@ erDiagram
   USER ||--o{ COMMENT_K : comments
   USER ||--o{ COMMENT_Q : comments
 
-
+```
 ## 🔒 정책
 - 삭제: 게시글/댓글 삭제 시 state='D' 처리
 - 파일 업로드: COS 라이브러리 사용, 저장 파일명은 UUID
