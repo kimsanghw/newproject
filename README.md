@@ -1,3 +1,17 @@
+## 목차
+- [프로젝트 소개](#-newproject--커뮤니티게시판-웹-애플리케이션)
+- [📌 핵심 기능](#-핵심-기능)
+- [⚙️ 사용 도구 & 선택 이유](#️-사용-도구--선택-이유)
+- [👉 선택 배경 요약](#-선택-배경-요약)
+- [📂 모듈 개요 (커피 게시판 예시)](#-모듈-개요-커피-게시판-예시)
+- [🔄 요청 흐름 (요약)](#-요청-흐름-요약)
+- [📁 프로젝트 구조](#-프로젝트-구조)
+- [🚀 시작하기(설치 & 실행)](#-시작하기설치--실행)
+- [🧭 URL 매핑(요약)](#-url-매핑요약)
+- [🧱 ERD & 컬럼 설명](#-erd--컬럼-설명)
+- [🔒 정책(소프트 삭제 / 파일 업로드 / 페이징)](#-정책소프트-삭제--파일-업로드--페이징)
+
+  
 # 🍰 NewProject – 커뮤니티/게시판 웹 애플리케이션
 
 간단한 커뮤니티/게시판 기반 웹 애플리케이션입니다.  
@@ -29,7 +43,7 @@
 ### 주요 기능
 - 게시글 목록 / 검색 / 페이징
 - 게시글 등록 / 수정 / 상세 / 조회수 증가
-- 소프트 삭제 (`state='D'`)
+- 게시글 삭제 (`state='D'`)
 - 첨부파일 업로드 (서버 저장, UUID 파일명 치환)
 - 댓글 등록 / 수정 / 삭제 / 목록
 
@@ -73,7 +87,7 @@ GET /coffee/modify.jsp?fno=... (폼)
 POST /coffee/modifyOk.jsp
 새 파일 업로드 시 UUID 갱신
 UPDATE coffee_board SET ... WHERE fno=?
-</details> <details> <summary><b>삭제 (소프트)</b></summary>
+</details> <details> <summary><b>삭제</b></summary>
 POST /coffee/deleteOk.jsp
 UPDATE coffee_board SET state='D' WHERE fno=?
 성공 시 목록으로 리다이렉트
@@ -190,3 +204,163 @@ newproject/
 ├─ build/
 └─ new.erm                          # ERD 파일
 
+
+## 🚀 시작하기(설치 & 실행)
+
+### 요구사항
+- JDK 11
+- Apache Tomcat 9+
+- MySQL 8.x
+
+
+---
+
+
+
+### URL 매핑(요약)
+
+```markdown
+## 🧭 URL 매핑(요약)
+
+### Coffee
+- 목록/검색: `GET /coffee/list.jsp?searchType=...&id=...&nowPage=n`
+- 상세: `GET /coffee/view.jsp?fno={번호}`
+- 등록: `GET /coffee/register.jsp`, `POST /coffee/registerOk.jsp`
+- 수정: `GET /coffee/modify.jsp?fno=...`, `POST /coffee/modifyOk.jsp`
+- 삭제: `POST /coffee/deleteOk.jsp`
+- 댓글: `POST /coffee/commentRegisterOk.jsp`, `commentModifyOk.jsp`, `commentDeleteFormOk.jsp`
+
+### Dessert/KoreanTradition/Notice
+- 각 모듈 구조 및 엔드포인트 패턴은 Coffee와 동일
+
+
+
+## 🧱 ERD (Mermaid)
+
+> 다이어그램이 안 보이면 GitHub에서 새로고침하거나, Mermaid 렌더링을 지원하는 뷰어에서 확인하세요.
+
+```mermaid
+erDiagram
+  %% ===== Entities =====
+  USER {
+    INT user_no PK
+    VARCHAR user_id
+    VARCHAR user_pw
+    VARCHAR user_name
+    VARCHAR email
+    INT age
+    CHAR gender
+    TIMESTAMP join_date
+    CHAR state      "E/D"
+    CHAR role       "A/U"
+  }
+
+  COFFEE_BOARD {
+    INT fno PK
+    INT writer_no FK
+    VARCHAR title
+    TEXT content
+    TIMESTAMP rdate
+    INT hit
+    CHAR state        "N/D"
+    CHAR notice_flag  "Y/N"
+    VARCHAR origin_filename
+    VARCHAR uuid_filename
+  }
+
+  DESSERT_BOARD {
+    INT fno PK
+    INT writer_no FK
+    VARCHAR title
+    TEXT content
+    TIMESTAMP rdate
+    INT hit
+    CHAR state
+    CHAR notice_flag
+    VARCHAR origin_filename
+    VARCHAR uuid_filename
+  }
+
+  KOREAN_TRADITION_DESSERT_BOARD {
+    INT fno PK
+    INT writer_no FK
+    VARCHAR title
+    TEXT content
+    TIMESTAMP rdate
+    INT hit
+    CHAR state
+    CHAR notice_flag
+    VARCHAR origin_filename
+    VARCHAR uuid_filename
+  }
+
+  NOTICE_BOARD {
+    INT fno PK
+    INT writer_no FK
+    VARCHAR title
+    TEXT content
+    TIMESTAMP rdate
+    INT hit
+    CHAR state
+    CHAR notice_flag
+    VARCHAR origin_filename
+    VARCHAR uuid_filename
+  }
+
+  COMMENT_C {
+    INT cno PK
+    INT fno   FK
+    INT writer_no FK
+    TEXT content
+    TIMESTAMP rdate
+    CHAR state "N/D"
+  }
+
+  COMMENT_D {
+    INT cno PK
+    INT fno   FK
+    INT writer_no FK
+    TEXT content
+    TIMESTAMP rdate
+    CHAR state
+  }
+
+  COMMENT_K {
+    INT cno PK
+    INT fno   FK
+    INT writer_no FK
+    TEXT content
+    TIMESTAMP rdate
+    CHAR state
+  }
+
+  COMMENT_Q {
+    INT cno PK
+    INT fno   FK
+    INT writer_no FK
+    TEXT content
+    TIMESTAMP rdate
+    CHAR state
+  }
+
+  %% ===== Relationships =====
+  USER ||--o{ COFFEE_BOARD : writes
+  USER ||--o{ DESSERT_BOARD : writes
+  USER ||--o{ KOREAN_TRADITION_DESSERT_BOARD : writes
+  USER ||--o{ NOTICE_BOARD : writes
+
+  COFFEE_BOARD ||--o{ COMMENT_C : has
+  DESSERT_BOARD ||--o{ COMMENT_D : has
+  KOREAN_TRADITION_DESSERT_BOARD ||--o{ COMMENT_K : has
+  NOTICE_BOARD ||--o{ COMMENT_Q : has
+
+  USER ||--o{ COMMENT_C : comments
+  USER ||--o{ COMMENT_D : comments
+  USER ||--o{ COMMENT_K : comments
+  USER ||--o{ COMMENT_Q : comments
+
+
+## 🔒 정책
+- 삭제: 게시글/댓글 삭제 시 state='D' 처리
+- 파일 업로드: COS 라이브러리 사용, 저장 파일명은 UUID
+- 페이징: PagingUtil로 계산 후 LIMIT ?, ? 사용
