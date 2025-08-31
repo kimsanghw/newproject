@@ -242,7 +242,6 @@ newproject/
 
 ## 🧱 ERD (Mermaid)
 
-> 다이어그램이 안 보이면 GitHub에서 새로고침하거나, Mermaid 렌더링을 지원하는 뷰어에서 확인하세요.
 
 ```mermaid
 erDiagram
