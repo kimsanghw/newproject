@@ -125,7 +125,7 @@
                     <button type="button"  onclick="location.href='list.jsp'" class="btn">글목록</button>
 					  <%
 					if(session.getAttribute("uno")!=null && session.getAttribute("uno").equals(uno)){%>
-					<button type="button" onclick="location.href='resgister.jsp'" class="btn">글쓰기</button> 
+					<button type="button" onclick="location.href='register.jsp'" class="btn">글쓰기</button> 
                     <button onclick="location.href='modify.jsp?fno=<%=fno%>'" class="btn">글수정</button>
                     <button onclick="document.deleteForm.submit();" class="btn">글삭제</button>
                     <form name="deleteForm" action="deleteOk.jsp" method="post">
