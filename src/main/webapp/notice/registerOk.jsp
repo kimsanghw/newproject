@@ -15,7 +15,7 @@
 		%>
 			<script>
 				alert("잘못된 접근입니다.");
-				location.href="resgister.jsp";
+				location.href="register.jsp";
 			
 			</script>
 		
@@ -159,7 +159,7 @@
 <script>
 
 	alert("등록이 실패하었습니다");
-	location.href="resgister.jsp";
+	location.href="register.jsp";
 				
 				
 </script>
