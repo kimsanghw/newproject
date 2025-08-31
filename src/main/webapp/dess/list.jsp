@@ -105,7 +105,7 @@
 	              </form>
 	              <div style="margin 5px; padding-left: 20px; ">
 	              	<%if(session.getAttribute("uno") != null){%>
-	              	<button type="button" onclick="location.href='resgister.jsp'" class="btn">글쓰기</button>
+	              	<button type="button" onclick="location.href='register.jsp'" class="btn">글쓰기</button>
 	              	 <% } %>
 	              </div>
 	              <table style="border-top: solid #D8D8D8 ;">
